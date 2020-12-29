@@ -59,6 +59,19 @@ double indexCount(string s)
 	return fi / (s.length() * (s.length() - 1));
 }
 
+int sameCount(string s, int per)
+{
+	Count = 0;
+
+	for (int i = 0; i < s.length() - per; i++)
+	{
+		if (s[i] == s[i + per]) //символ Крокенера
+			Count++;
+	}
+
+	return Count;
+}
+
 int main()
 {
 	setlocale(LC_ALL, "rus");
@@ -69,7 +82,7 @@ int main()
 	ofstream ofs, ofs2, ofs3, ofs4, ofs5, ofs15;
 	char c[25000];
 	string key1, key2, key3, key4, key5;
-	string inp1;
+	string inp1, inp2;
 
 	ifs.open("keys.txt");
 
@@ -122,7 +135,48 @@ int main()
 	ofs4.close();
 	ofs5.close();
 	ofs15.close();
+	ifs.close();
+	ifs.open("input2.txt");
+	ofs.open("output2.txt");
 
+	ifs.getline(c, 5000);
+	inp2 = c;
+
+	ofs << indexCount(inp2) << endl << endl;
+
+	ofs << "1\t" << sameCount(inp2, 1) << endl;
+	ofs << "2\t" << sameCount(inp2, 2) << endl;
+	ofs << "3\t" << sameCount(inp2, 3) << endl;
+	ofs << "4\t" << sameCount(inp2, 4) << endl;
+	ofs << "5\t" << sameCount(inp2, 5) << endl;
+	ofs << "6\t" << sameCount(inp2, 6) << endl;
+	ofs << "7\t" << sameCount(inp2, 7) << endl;
+	ofs << "8\t" << sameCount(inp2, 8) << endl;
+	ofs << "9\t" << sameCount(inp2, 9) << endl;
+	ofs << "10\t" << sameCount(inp2, 10) << endl;
+	ofs << "11\t" << sameCount(inp2, 11) << endl;
+	ofs << "12\t" << sameCount(inp2, 12) << endl;
+	ofs << "13\t" << sameCount(inp2, 13) << endl;
+	ofs << "14\t" << sameCount(inp2, 14) << endl;
+	ofs << "15\t" << sameCount(inp2, 15) << endl;
+	ofs << "16\t" << sameCount(inp2, 16) << endl;
+	ofs << "17\t" << sameCount(inp2, 17) << endl;
+	ofs << "18\t" << sameCount(inp2, 18) << endl;
+	ofs << "19\t" << sameCount(inp2, 19) << endl;
+	ofs << "20\t" << sameCount(inp2, 20) << endl;
+	ofs << "21\t" << sameCount(inp2, 21) << endl;
+	ofs << "22\t" << sameCount(inp2, 22) << endl;
+	ofs << "23\t" << sameCount(inp2, 23) << endl;
+	ofs << "24\t" << sameCount(inp2, 24) << endl;
+	ofs << "25\t" << sameCount(inp2, 25) << endl;
+	ofs << "26\t" << sameCount(inp2, 26) << endl;
+	ofs << "27\t" << sameCount(inp2, 27) << endl;
+	ofs << "28\t" << sameCount(inp2, 28) << endl;
+	ofs << "29\t" << sameCount(inp2, 29) << endl;
+	ofs << "30\t" << sameCount(inp2, 30) << endl;
+	ofs << "31\t" << sameCount(inp2, 31) << endl;
+	ofs << "32\t" << sameCount(inp2, 32) << endl;
+	ofs << "33\t" << sameCount(inp2, 33) << endl;
 
 	//ofs << key1 << "\n" << key2 << "\n" << key3 << "\n" << key4 << "\n" << key5 << "\n";
 	//if (key5[2] == key5[4]) cout << 1;
