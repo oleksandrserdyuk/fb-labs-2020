@@ -72,6 +72,62 @@ int sameCount(string s, int per)
 	return Count;
 }
 
+string findKey(string s, int per, int ch)
+{
+	int maxCount;
+	int maxI;
+	int currI;
+	temp_sum = "";
+
+	for (int h = 0; h < per; h++)
+	{
+		maxCount = 0;
+		maxI = 0;
+
+		for (int i = 0; i < 32; i++)
+		{
+			Count = 0;
+
+			for (int j = h; j < s.length(); j+=per)
+			{
+				if (s[j] == alphabet[i])
+				{
+					Count++;
+				}
+			}
+			if (Count > maxCount)
+			{
+				maxCount = Count;
+				maxI = i;
+			}
+		}
+		currI = (32 + maxI - ch) % 32;
+		temp_sum += alphabet[currI];
+	}
+	return temp_sum;
+}
+
+string decipher(string s, string k)
+{
+	period = k.length();
+
+	for (int i = 0; i < s.length(); i++)
+	{
+		ki = i % period;
+		for (int j = 0; j < 32; j++)
+		{
+			if (s[i] == alphabet[j])
+				oper1 = j;
+			if (k[ki] == alphabet[j])
+				oper2 = j;
+		}
+
+		sum_index = abs(32 + oper1 - oper2) % 32;
+		sum[i] = alphabet[sum_index];
+	}
+	return sum.substr(0, s.length());
+}
+
 int main()
 {
 	setlocale(LC_ALL, "rus");
@@ -178,15 +234,14 @@ int main()
 	ofs << "32\t" << sameCount(inp2, 32) << endl;
 	ofs << "33\t" << sameCount(inp2, 33) << endl;
 
-	//ofs << key1 << "\n" << key2 << "\n" << key3 << "\n" << key4 << "\n" << key5 << "\n";
-	//if (key5[2] == key5[4]) cout << 1;
-	//else cout << 0;
-	//if (key5[0] == alphabet[6]) cout << 1;
-	//else cout << 0;
-	//cout << alphabet[6];
-	//ofs << "\n" << key5[0] << "\n" << inp1;
-	//cout << key4[2] << key4[3] << key4.substr(0, 3);
-
+	ofs << findKey(inp2, 16, 14) << "\n";
+	ofs << findKey(inp2, 16, 5) << "\n";
+	ofs << findKey(inp2, 16, 0) << "\n";
+	ofs << findKey(inp2, 16, 8) << "\n";
+	ofs << findKey(inp2, 16, 13) << "\n";
+	
+	temp_sum = decipher(inp2, "братьякарамазовы");
+	ofs << "\n" << temp_sum << "\n";
 
 	ofs.close();
 }
