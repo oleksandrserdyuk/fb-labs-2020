@@ -261,3 +261,20 @@ else:
         print("B was authenticated successfully")
     else:
         print("B wasn`t authenticated")
+
+
+print("\n\n\nInteraction with site:")
+k = GenerateMessage(pub_keyA)
+print("k:", hex(k))
+print("\nA has public key:", hex(pub_keyA[0]), hex(pub_keyA[1]))
+print("and private key:", hex(priv_keyA))
+pub_keyB[1] = 0xD8B37B1B013D8E7A63B526AA99C00DB8BBBB56AC38F5CB3D5A2B55C2CEBED8C24327866639C1601B0169D2473B9BA662CB6C960D96A989D177EF99B53B21D16961A7357225CDF3182411D7
+print("\nSite has key:", hex(pub_keyB[1]))
+pub_keyB[1] = int(pub_keyB[1])
+
+SendedKey = SendKey(k, priv_keyA, pub_keyA, pub_keyB)
+print("\nA sended key:", SendedKey)
+print("k1:", SendedKey[0])
+print("S1:", SendedKey[1])
+print("k1 in hex notation:", hex(SendedKey[0]))
+print("S1 in hex notation:", hex(SendedKey[1]))
